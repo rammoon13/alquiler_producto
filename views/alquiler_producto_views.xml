@@ -1,0 +1,57 @@
+<!-- views/alquiler_producto_views.xml -->
+<odoo>
+    <!-- Vista Formulario -->
+    <record id="view_alquiler_producto_form" model="ir.ui.view">
+        <field name="name">alquiler.producto.form</field>
+        <field name="model">alquiler.producto</field>
+        <field name="arch" type="xml">
+            <form string="Gestión de Alquiler de Productos">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="cliente_id"/>
+                        <field name="producto_id"/>
+                        <field name="fecha_inicio"/>
+                        <field name="fecha_fin" readonly="1"/>
+                        <field name="estado"/>
+                    </group>
+                    <group>
+                        <field name="observaciones" widget="text"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista Tree -->
+    <record id="view_alquiler_producto_tree" model="ir.ui.view">
+        <field name="name">alquiler.producto.tree</field>
+        <field name="model">alquiler.producto</field>
+        <field name="arch" type="xml">
+            <tree string="Préstamos de Productos">
+                <field name="name"/>
+                <field name="cliente_id"/>
+                <field name="producto_id"/>
+                <field name="fecha_inicio"/>
+                <field name="fecha_fin"/>
+                <field name="estado"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Acción de ventana -->
+    <record id="action_alquiler_producto" model="ir.actions.act_window">
+        <field name="name">Gestión de Alquiler</field>
+        <field name="res_model">alquiler.producto</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                No hay préstamos registrados. Haz clic en "Crear" para añadir un nuevo.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menú -->
+    <menuitem id="menu_alquiler_producto_root" name="Gestión de Alquiler" sequence="10"/>
+    <menuitem id="menu_alquiler_producto" name="Préstamos" parent="menu_alquiler_producto_root" action="action_alquiler_producto" sequence="10"/>
+</odoo>
